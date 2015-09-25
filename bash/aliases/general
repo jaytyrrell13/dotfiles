@@ -1,0 +1,17 @@
+# ======== General ========
+alias cl='clear'
+alias _='sudo'
+alias ..='cd ../'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias ll='ls -lah'
+
+# ======== Directory ========
+alias md='mkdir'
+alias rr='rm -r'
+
+# ======== CPU ========
+alias tu='top -o cpu' # cpu
+alias tm='top -o vsize' #memory
+
+alias aliases='cd ~/dev/personal/dotfiles/bash/aliases'
