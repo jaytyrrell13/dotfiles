@@ -6,3 +6,7 @@ function take {
 function pag {
         ps aux | grep $1
 }
+
+function homestead() {
+	( cd ~/Homestead && vagrant $* )
+}

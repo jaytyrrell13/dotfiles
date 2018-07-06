@@ -1,0 +1,41 @@
+alias at-qa='ssh jay.tyrrell@10.142.7.34'
+alias at-x='ssh jay.tyrrell@10.142.5.3'
+alias at-jb='ssh jay.tyrrell@10.142.9.20'
+
+function createBranch() {
+    BRANCH=$1
+    ORIGIN_BRANCH=${2:-origin/bravo}
+
+    switchToProject
+    git fetch
+    git checkout -b ${BRANCH} ${ORIGIN_BRANCH}
+    git push origin ${BRANCH}
+    git branch --set-upstream-to=origin/${BRANCH} ${BRANCH}
+}
+
+function newBug() {
+    newTicket $1 origin/charlie
+}
+
+function newTicket() {
+    TICKET_NUMBER=$1
+    ORIGIN_BRANCH=${2:-origin/bravo}
+
+    createBranch jay/CARD-${TICKET_NUMBER} ${ORIGIN_BRANCH}
+}
+
+function card() {
+    TICKET_NUMBER=$1
+
+    switchToProject
+    git fetch
+    git checkout jay/CARD-${TICKET_NUMBER}
+}
+
+function mergeBravo() {
+    git merge origin/bravo
+}
+
+function switchToProject() {
+    cd ~/dev/enableto
+}

@@ -1,0 +1,3 @@
+alias h='homestead'
+alias hup='homestead up'
+alias hssh='homestead ssh'

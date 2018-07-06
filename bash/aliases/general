@@ -10,8 +10,4 @@ alias ll='ls -lah'
 alias md='mkdir'
 alias rr='rm -r'
 
-# ======== CPU ========
-alias tu='top -o cpu' # cpu
-alias tm='top -o vsize' #memory
-
-alias aliases='cd ~/dev/personal/dotfiles/bash/aliases'
+alias aliases='cd ~/dev/dotfiles/bash/aliases'
