@@ -259,9 +259,6 @@ nmap <C-p> :Files<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>m :Maps<cr>
 
-" Nvim tree
-nnoremap <C-n> :NvimTreeToggle<cr>
-
 " Abbreviations
 inoreabbrev cosnt const
 
