@@ -27,6 +27,12 @@ alias gcm="git checkout master"
 alias gcp="git cherry-pick"
 alias nah="git reset --hard; git clean -df;"
 
+alias yst="yadm status"
+alias ya="yadm add"
+alias yau="yadm add -u"
+alias yc="yadm commit"
+alias yps="yadm push"
+
 alias a="php artisan"
 alias p="vendor/bin/phpunit"
 alias cda="composer dump-autoload"
