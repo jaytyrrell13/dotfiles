@@ -9,7 +9,7 @@ require('gitsigns').setup()
 
 require'lspconfig'.phpactor.setup{}
 
--- require'lspconfig'.elixirls.setup{ cmd = {"/Users/jay/elixir-ls/language_server.sh"} }
+require'lspconfig'.elixirls.setup{ cmd = {"/Users/jay/elixir-ls/language_server.sh"} }
 
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
