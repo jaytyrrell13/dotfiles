@@ -255,7 +255,7 @@ nmap <leader>NR :Dispatch! npm run<space>
 nmap <leader>ni :Dispatch npm install<cr>
 
 " FZF
-nmap <C-p> :Files<cr>
+nmap <C-p> :GitFiles<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>m :Maps<cr>
 
