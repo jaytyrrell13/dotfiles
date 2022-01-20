@@ -11,7 +11,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'sainnhe/everforest'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-dispatch'
+" Plug 'tpope/vim-dispatch'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'idanarye/vim-merginal'
@@ -161,6 +161,7 @@ nmap <leader>pc :PlugClean<cr>
 " nmap <c-p> :CtrlP<cr>
 " nmap <c-r> :CtrlPBufTag<cr>
 " nmap <c-e> :CtrlPMRUFiles<cr>
+" nmap <leader>cc :CtrlPClearCache<cr>
 
 " LSP
 nmap <leader>gd :lua vim.lsp.buf.definition()<cr>
@@ -197,9 +198,6 @@ nmap <leader>ts :TestSuite<cr>
 
 "----------------Mappings----------------"
 " nmap = mapping for normal mode
-
-" Fast find
-nmap <leader>f :find<space>*
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -242,6 +240,9 @@ nmap <leader>lp :lprev<cr>
 " Search and replace word under cursor
 nnoremap <leader>s :%s/<C-r><C-w>/
 
+" Find word under cursor
+nnoremap <leader>f :Git grep <c-r><c-w><cr>
+
 " Fugitive
 " Git Status
 nmap <leader>gs :Git<CR>
@@ -250,9 +251,9 @@ nmap <leader>gps :Git push<CR>
 nmap <leader>gg :Git grep<space>
 
 " Dispatch
-nmap <leader>nr :Dispatch npm run<space>
-nmap <leader>NR :Dispatch! npm run<space>
-nmap <leader>ni :Dispatch npm install<cr>
+" nmap <leader>nr :Dispatch npm run<space>
+" nmap <leader>NR :Dispatch! npm run<space>
+" nmap <leader>ni :Dispatch npm install<cr>
 
 " FZF
 nmap <C-p> :GitFiles<cr>
