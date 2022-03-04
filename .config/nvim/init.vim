@@ -5,11 +5,9 @@ source ~/.vimrc
 lua <<EOF
 require'lspconfig'.eslint.setup{}
 
-require('gitsigns').setup()
-
 require'lspconfig'.phpactor.setup{}
 
-require'lspconfig'.elixirls.setup{ cmd = {"/Users/jay/elixir-ls/language_server.sh"} }
+-- require'lspconfig'.elixirls.setup{ cmd = {"/Users/jay/elixir-ls/language_server.sh"} }
 
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -32,7 +30,7 @@ require'nvim-treesitter.configs'.setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = true,
+    additional_vim_regex_highlighting = false,
   },
 }
 EOF

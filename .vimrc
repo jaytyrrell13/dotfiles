@@ -14,14 +14,12 @@ Plug 'tpope/vim-surround'
 " Plug 'tpope/vim-dispatch'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'idanarye/vim-merginal'
 Plug 'vim-test/vim-test'
 Plug 'mattn/emmet-vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'elixir-editors/vim-elixir'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'tpope/vim-unimpaired'
 
 call plug#end()
 
@@ -60,14 +58,14 @@ set autowriteall
 set complete=.,w,b,u
 
 " Set how quickly Vim updates
-set updatetime=100
+" set updatetime=100
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw
+" set lazyredraw
 
 "----------------Visuals----------------"
 
-" syntax enable
+syntax enable
 
 " Use 256 colors for terminal vim
 " set t_CO=256
@@ -78,6 +76,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+set smartindent
 
 if (has("termguicolors"))
   set termguicolors
@@ -87,12 +86,7 @@ set signcolumn=yes
 
 " let &t_ZH="\e[3m"
 " let &t_ZR="\e[23m"
-let &t_ut=''
-
-" let g:gruvbox_material_enable_italic = 1
-" let g:gruvbox_material_background = 'medium'
-" let g:gruvbox_material_palette = 'original'
-" colorscheme gruvbox-material
+" let &t_ut=''
 
 set background=dark
 let g:everforest_enable_italic = 1
@@ -134,14 +128,6 @@ nmap <C-J> <C-W><C-J>
 nmap <C-K> <C-W><C-K>
 nmap <C-L> <C-W><C-L>
 
-"----------------File Browsing----------------"
-let g:netrw_browse_split=4  " open in prior window
-let g:netrw_altv=1          " open splits to the right
-let g:netrw_liststyle=3     " tree view
-let g:netrw_list_hide=netrw_gitignore#Hide()
-" let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-let g:netrw_winsize = 25
-
 "----------------Plugins----------------"
 
 " Plug
@@ -172,27 +158,11 @@ nmap <leader>do :lua vim.diagnostic.open_float()<cr>
 nmap <leader>rn :lua vim.lsp.buf.rename()<cr>
 nmap <leader>ca :lua vim.lsp.buf.code_action()<cr>
 
-" ALE
-" let g:ale_fix_on_save = 1
-" let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
-" let g:ale_linters = {'vue': ['eslint', 'vls']}
-" let g:ale_fixers = {
-" \'*': ['remove_trailing_lines', 'trim_whitespace'],
-" \'javascript': ['eslint'],
-" \'vue': ['eslint']
-" \}
-
-" nmap <leader>dd :ALEGoToDefinition<cr>
-" nmap <leader>af :ALEFix<cr>
-" nmap <silent> <C-n> <Plug>(ale_next_wrap)
-
-" Merginal
-nmap <leader>mt :MerginalToggle<cr>
-
 " Vim-Test
 let g:test#strategy = 'neovim'
 let g:test#neovim#start_normal = 1
 nmap <leader>tn :TestNearest<cr>
+nmap <leader>tl :TestLast<cr>
 nmap <leader>tf :TestFile<cr>
 nmap <leader>ts :TestSuite<cr>
 
@@ -232,10 +202,10 @@ nmap <leader><space> :nohlsearch<cr>
 nnoremap <leader>L "ayiwoconsole.log('<C-R>a', <C-R>a)<esc>
 
 " Location List
-nmap <leader>lo :lopen<cr>
-nmap <leader>lc :lclose<cr>
-nmap <leader>ln :lnext<cr>
-nmap <leader>lp :lprev<cr>
+" nmap <leader>lo :lopen<cr>
+" nmap <leader>lc :lclose<cr>
+" nmap <leader>ln :lnext<cr>
+" nmap <leader>lp :lprev<cr>
 
 " Search and replace word under cursor
 nnoremap <leader>s :%s/<C-r><C-w>/
@@ -250,11 +220,6 @@ nmap <leader>gpl :Git pull<CR>
 nmap <leader>gps :Git push<CR>
 nmap <leader>gg :Git grep<space>
 
-" Dispatch
-" nmap <leader>nr :Dispatch npm run<space>
-" nmap <leader>NR :Dispatch! npm run<space>
-" nmap <leader>ni :Dispatch npm install<cr>
-
 " FZF
 nmap <C-p> :GitFiles<cr>
 nmap <leader>b :Buffers<cr>
@@ -263,12 +228,17 @@ nmap <leader>m :Maps<cr>
 " Abbreviations
 inoreabbrev cosnt const
 
-inoreabbrev cls console.log('')<esc>2h
-inoreabbrev clo console.log({  })<esc>3h
-inoreabbrev desc describe('foo', () => {<cr><cr>})<esc>?foo<cr>cw
-inoreabbrev iaa it('should foo', async () => {<cr>})<esc>?foo<cr>cw
+inoreabbrev cls console.log('foo')<esc>?foo<cr>:nohlsearch<cr>cw
+inoreabbrev clo console.log({ foo })<esc>?foo<cr>:nohlsearch<cr>cw
+inoreabbrev desc describe('foo', () => {<cr><cr>})<esc>?foo<cr>:nohlsearch<cr>cw
+inoreabbrev iaa it('should foo', async () => {<cr>})<esc>?foo<cr>:nohlsearch<cr>cw
 inoreabbrev aaf async () => {<cr>}<esc>O
 inoreabbrev arr () => {<cr>}<esc>O
+inoreabbrev imp import foo from ''<esc>?foo<cr>:nohlsearch<cr>cw
+inoreabbrev imd import { foo } from ''<esc>?foo<cr>:nohlsearch<cr>cw
+inoreabbrev saf static async foo() {<cr>}<esc>?foo<cr>:nohlsearch<cr>cw
+inoreabbrev pubf public function foo()<cr>{}
+inoreabbrev testf /** @test */<cr>public function foo()<cr>{<cr>}<esc>?foo<cr>:nohlsearch<cr>cw
 
 inoremap ( ()<esc>i
 inoremap [ []<esc>i
