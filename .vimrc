@@ -21,6 +21,18 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-unimpaired'
 
+" Completion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
 call plug#end()
 
 "--------------------------------------"
@@ -56,6 +68,8 @@ set autowriteall
 
 " Set our desired autocompletion matching
 set complete=.,w,b,u
+
+set completeopt=menu,menuone,noselect
 
 " Set how quickly Vim updates
 " set updatetime=100
@@ -237,10 +251,10 @@ inoreabbrev arr () => {<cr>}<esc>O
 inoreabbrev imp import foo from ''<esc>?foo<cr>:nohlsearch<cr>cw
 inoreabbrev imd import { foo } from ''<esc>?foo<cr>:nohlsearch<cr>cw
 inoreabbrev saf static async foo() {<cr>}<esc>?foo<cr>:nohlsearch<cr>cw
-inoreabbrev pubf public function foo()<cr>{}
+inoreabbrev pubf public function foo()<cr>{}<esc>?foo<cr>:nohlsearch<cr>cw
 inoreabbrev testf /** @test */<cr>public function foo()<cr>{<cr>}<esc>?foo<cr>:nohlsearch<cr>cw
 
-inoremap ( ()<esc>i
+" inoremap ( ()<esc>i
 inoremap [ []<esc>i
 inoremap { {}<esc>i
 
