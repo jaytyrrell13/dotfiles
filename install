@@ -5,6 +5,10 @@ DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo 'Linking zshrc file'
 ln -sf $DOTFILES/zsh/zshrc $HOME/.zshrc
 
+echo 'Linking fzf zsh file'
+rm -rf $HOME/.fzf.zsh
+ln -sf $DOTFILES/zsh/fzf.zsh $HOME/.fzf.zsh
+
 echo 'Linking nvim config'
 rm -rf $HOME/.config/nvim
 ln -s $DOTFILES/nvim $HOME/.config/nvim
