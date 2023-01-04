@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+echo 'Linking zshrc file'
+ln -sf $DOTFILES/zsh/zshrc $HOME/.zshrc
+
+echo 'Linking nvim config'
+rm -rf $HOME/.config/nvim
+ln -s $DOTFILES/nvim $HOME/.config/nvim
+
+echo 'Linking kitty config'
+rm -rf $HOME/.config/kitty
+ln -s $DOTFILES/kitty $HOME/.config/kitty
