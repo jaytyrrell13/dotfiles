@@ -33,11 +33,12 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping(function(fallback)
-      if not cmp.confirm(option) then
-        fallback()
-      end
-    end, { 'i', 's' }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    -- ['<CR>'] = cmp.mapping(function(fallback)
+    --   if not cmp.confirm(option) then
+    --     fallback()
+    --   end
+    -- end, { 'i', 's' }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -69,3 +70,24 @@ cmp.setup({
   },
 })
 
+cmp.setup.cmdline('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'cmp_git' }
+  }, {
+    { name = 'buffer' }
+  })
+})
+
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
