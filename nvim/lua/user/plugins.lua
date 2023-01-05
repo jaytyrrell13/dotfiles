@@ -38,14 +38,24 @@ use({
     require('user.plugins.fugitive')
   end
 })
+
 use 'tpope/vim-commentary'
 use 'tpope/vim-surround'
 use 'tpope/vim-unimpaired'
+use 'AndrewRadev/splitjoin.vim'
+
 use({
   'vim-test/vim-test',
   config = function()
     require('user.plugins.vimtest')
   end,
+})
+
+use({
+  'windwp/nvim-autopairs',
+  config = function ()
+    require('nvim-autopairs').setup()
+  end
 })
 
 use({
