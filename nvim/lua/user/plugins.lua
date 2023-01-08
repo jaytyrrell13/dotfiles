@@ -1,8 +1,8 @@
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -13,7 +13,7 @@ local packer_bootstrap = ensure_packer()
 
 -- Initialize packer
 require('packer').init({
-  compile_path = vim.fn.stdpath('data')..'/site/plugin/packer_compiled.lua',
+  compile_path = vim.fn.stdpath('data') .. '/site/plugin/packer_compiled.lua',
   display = {
     open_fn = function()
       return require('packer.util').float({ border = 'solid' })
@@ -24,11 +24,16 @@ require('packer').init({
 -- Install plugins
 local use = require('packer').use
 
-use('wbthomason/packer.nvim') -- Let packer manage itself
+use({
+  'wbthomason/packer.nvim',
+  config = function()
+    vim.keymap.set('n', '<leader>pi', '<cmd>PackerSync<cr>')
+  end
+})
 use({
   'rmehri01/onenord.nvim',
   config = function()
-    require('user.plugins.onenord')
+    require('onenord').setup()
   end
 })
 use 'sheerun/vim-polyglot'
@@ -53,7 +58,7 @@ use({
 
 use({
   'windwp/nvim-autopairs',
-  config = function ()
+  config = function()
     require('nvim-autopairs').setup()
   end
 })
@@ -110,6 +115,7 @@ use({
     'hrsh7th/cmp-nvim-lsp-signature-help',
     'hrsh7th/cmp-nvim-lua',
     'onsails/lspkind-nvim',
+    'saadparwaiz1/cmp_luasnip',
   },
   config = function()
     require('user.plugins.cmp')
@@ -128,4 +134,3 @@ vim.cmd([[
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]])
-
