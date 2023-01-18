@@ -30,3 +30,7 @@ vim.keymap.set('x', '<C-k>', ":move '<-2<CR>gv-gv")
 -- Reselect visual selection after indenting
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
+
+-- Easy insertion of a trailing ; or , from insert mode
+vim.keymap.set('i', ';;', '<esc>A;<esc>')
+vim.keymap.set('i', ',,', '<esc>A,<esc>')
