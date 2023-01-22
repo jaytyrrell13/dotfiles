@@ -30,12 +30,27 @@ use({
     vim.keymap.set('n', '<leader>pi', '<cmd>PackerSync<cr>')
   end
 })
+
 use({
-  'rmehri01/onenord.nvim',
-  config = function()
-    require('onenord').setup()
+  'sainnhe/everforest',
+  config = function ()
+    vim.g.everforest_background = 'soft'
+    vim.g.everforest_better_performance = 1
+    vim.cmd('colorscheme everforest')
   end
 })
+
+-- use({
+--   'rmehri01/onenord.nvim',
+--   config = function()
+--     require('onenord').setup()
+
+--     vim.api.nvim_set_hl(0, 'StatusLineNonText', {
+--       fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
+--       bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
+--     })
+--   end
+-- })
 use 'sheerun/vim-polyglot'
 use({
   'tpope/vim-fugitive',
