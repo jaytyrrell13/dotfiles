@@ -10,7 +10,7 @@ ls.add_snippets('php', {
   ls.parser.parse_snippet('pubf', 'public function $1($2): $3\n{\n\t$0\n}'),
   ls.parser.parse_snippet('prif', 'private function $1($2): $3\n{\n\t$0\n}'),
   ls.parser.parse_snippet('prof', 'protected function $1($2): $3\n{\n\t$0\n}'),
-  ls.parser.parse_snippet('testf', '/** @test */\npublic function it_$1()\n{\n\t$0\n}'),
+  ls.parser.parse_snippet('testf', '/** @test */\npublic function it_$1(): void\n{\n\t$0\n}'),
 })
 
 ls.add_snippets('typescript', {
