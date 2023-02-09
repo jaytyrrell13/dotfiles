@@ -31,22 +31,15 @@ use({
   end
 })
 
--- use({
---   'sainnhe/everforest',
---   config = function ()
---     vim.g.everforest_background = 'soft'
---     vim.g.everforest_better_performance = 1
---     vim.cmd('colorscheme everforest')
---   end
--- })
-
 use({
   'rmehri01/onenord.nvim',
   config = function()
     require('onenord').setup()
   end
 })
+
 use 'sheerun/vim-polyglot'
+
 use({
   'tpope/vim-fugitive',
   config = function()
@@ -80,6 +73,8 @@ use({
   end
 })
 
+use 'b0o/schemastore.nvim'
+
 use({
   'nvim-lualine/lualine.nvim',
   requires = 'kyazdani42/nvim-web-devicons',
@@ -103,7 +98,13 @@ use({
 
 use({
   'nvim-treesitter/nvim-treesitter',
-  run = ':TSUpdate',
+  run = function ()
+    require('nvim-treesitter.install').update({ with_sync = true })
+  end,
+  requires = {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    'nvim-treesitter/nvim-treesitter-textobjects'
+  },
   config = function()
     require('user.plugins.treesitter')
   end,

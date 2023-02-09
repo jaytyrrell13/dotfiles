@@ -26,6 +26,16 @@ require('lspconfig')['phpactor'].setup {
   capabilities = capabilities
 }
 
+require('lspconfig').jsonls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+    }
+  }
+}
+
 require('lspconfig')['sumneko_lua'].setup {
   on_attach = on_attach,
   capabilities = capabilities,

@@ -1,36 +1,31 @@
 require('nvim-treesitter.configs').setup({
-    ensure_installed = {
-      "css",
-      "html",
-      "javascript",
-      "json",
-      "lua",
-      "php",
-      "rust",
-      "vim",
-      "vue",
-    },
-
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-
-  -- List of parsers to ignore installing (for "all")
-  ignore_install = { "" },
+    ensure_installed = 'all',
 
   highlight = {
     -- 'false' will disable the whole extension
     enable = true,
 
-    -- list of languages that will be disabled
-    disable = { "" },
-
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = true,
   },
-
+  context_commentstrin = {
+    enable = true
+  },
+  textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ['if'] = '@function.inner',
+        ['af'] = '@function.outer',
+        ['ia'] = '@parameter.inner',
+        ['aa'] = '@parameter.outer'
+      }
+    }
+  },
   indent = {
     enable = true
   }
