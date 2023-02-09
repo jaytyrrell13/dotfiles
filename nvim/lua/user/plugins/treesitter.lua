@@ -11,7 +11,7 @@ require('nvim-treesitter.configs').setup({
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = true,
   },
-  context_commentstrin = {
+  context_commentstring = {
     enable = true
   },
   textobjects = {
