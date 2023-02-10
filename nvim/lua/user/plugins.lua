@@ -3,7 +3,7 @@ local ensure_packer = function()
   local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-    vim.cmd [[packadd packer.nvim]]
+    vim.cmd([[packadd packer.nvim]])
     return true
   end
   return false
@@ -28,29 +28,33 @@ use({
   'wbthomason/packer.nvim',
   config = function()
     vim.keymap.set('n', '<leader>pi', '<cmd>PackerSync<cr>')
-  end
+  end,
 })
 
 use({
   'rmehri01/onenord.nvim',
   config = function()
     require('onenord').setup()
-  end
+  end,
 })
 
-use 'sheerun/vim-polyglot'
+use('sheerun/vim-polyglot')
 
 use({
   'tpope/vim-fugitive',
   config = function()
     require('user.plugins.fugitive')
-  end
+  end,
 })
 
-use 'tpope/vim-commentary'
-use 'tpope/vim-surround'
-use 'tpope/vim-unimpaired'
-use 'AndrewRadev/splitjoin.vim'
+use('tpope/vim-commentary')
+use('tpope/vim-surround')
+use('tpope/vim-unimpaired')
+use('AndrewRadev/splitjoin.vim')
+use({
+  'whatyouhide/vim-textobj-xmlattr',
+  requires = 'kana/vim-textobj-user',
+})
 
 use({
   'vim-test/vim-test',
@@ -63,17 +67,19 @@ use({
   'windwp/nvim-autopairs',
   config = function()
     require('nvim-autopairs').setup()
-  end
+  end,
 })
 
 use({
   'neovim/nvim-lspconfig',
   config = function()
     require('user.plugins.lspconfig')
-  end
+  end,
 })
 
-use 'b0o/schemastore.nvim'
+use('jose-elias-alvarez/null-ls.nvim')
+
+use('b0o/schemastore.nvim')
 
 use({
   'nvim-lualine/lualine.nvim',
@@ -98,12 +104,12 @@ use({
 
 use({
   'nvim-treesitter/nvim-treesitter',
-  run = function ()
+  run = function()
     require('nvim-treesitter.install').update({ with_sync = true })
   end,
   requires = {
     'JoosepAlviste/nvim-ts-context-commentstring',
-    'nvim-treesitter/nvim-treesitter-textobjects'
+    'nvim-treesitter/nvim-treesitter-textobjects',
   },
   config = function()
     require('user.plugins.treesitter')

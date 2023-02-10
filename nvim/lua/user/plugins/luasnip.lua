@@ -16,7 +16,7 @@ ls.add_snippets('php', {
 ls.add_snippets('typescript', {
   ls.parser.parse_snippet('import', "import $1 from '$0'"),
   ls.parser.parse_snippet('cls', "console.log('$0')"),
-  ls.parser.parse_snippet('clo', "console.log({ $0 })")
+  ls.parser.parse_snippet('clo', 'console.log({ $0 })'),
 })
 
 ls.add_snippets('vue', {

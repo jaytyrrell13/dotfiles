@@ -72,22 +72,22 @@ cmp.setup({
 
 cmp.setup.cmdline('gitcommit', {
   sources = cmp.config.sources({
-    { name = 'cmp_git' }
+    { name = 'cmp_git' },
   }, {
-    { name = 'buffer' }
-  })
+    { name = 'buffer' },
+  }),
 })
 
 cmp.setup.cmdline('/', {
   sources = {
-    { name = 'buffer' }
-  }
+    { name = 'buffer' },
+  },
 })
 
 cmp.setup.cmdline(':', {
   sources = cmp.config.sources({
-    { name = 'path' }
+    { name = 'path' },
   }, {
-    { name = 'cmdline' }
-  })
+    { name = 'cmdline' },
+  }),
 })

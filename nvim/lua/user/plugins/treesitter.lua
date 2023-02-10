@@ -1,5 +1,5 @@
 require('nvim-treesitter.configs').setup({
-    ensure_installed = 'all',
+  ensure_installed = 'all',
 
   highlight = {
     -- 'false' will disable the whole extension
@@ -12,7 +12,7 @@ require('nvim-treesitter.configs').setup({
     additional_vim_regex_highlighting = true,
   },
   context_commentstring = {
-    enable = true
+    enable = true,
   },
   textobjects = {
     select = {
@@ -22,11 +22,11 @@ require('nvim-treesitter.configs').setup({
         ['if'] = '@function.inner',
         ['af'] = '@function.outer',
         ['ia'] = '@parameter.inner',
-        ['aa'] = '@parameter.outer'
-      }
-    }
+        ['aa'] = '@parameter.outer',
+      },
+    },
   },
   indent = {
-    enable = true
-  }
+    enable = true,
+  },
 })
