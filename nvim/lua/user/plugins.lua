@@ -96,6 +96,7 @@ use({
     { 'kyazdani42/nvim-web-devicons' },
     { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     { 'nvim-telescope/telescope-live-grep-args.nvim' },
+    { 'jaytyrrell13/telescope-artisan.nvim' },
   },
   config = function()
     require('user.plugins.telescope')

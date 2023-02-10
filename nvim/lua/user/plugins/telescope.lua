@@ -1,7 +1,7 @@
-require('telescope').setup({})
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('live_grep_args')
 require('telescope').load_extension('artisan')
+require('telescope').setup({})
 
 local builtin = require('telescope.builtin')
 local extensions = require('telescope').extensions
@@ -31,3 +31,4 @@ vim.keymap.set('n', '<leader>m', builtin.keymaps, { noremap = true, desc = 'tele
 vim.keymap.set('n', '<leader>ev', function()
   builtin.find_files({ cwd = '~/.config/nvim' })
 end, { noremap = true, desc = 'telescope.builtin.find_files for nvim config' })
+vim.keymap.set('n', '<leader>a', ':Telescope artisan<cr>')
