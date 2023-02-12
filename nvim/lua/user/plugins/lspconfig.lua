@@ -70,7 +70,6 @@ require('lspconfig')['sumneko_lua'].setup({
 })
 
 require('null-ls').setup({
-  debug = true,
   sources = {
     -- Code Actions
     require('null-ls').builtins.code_actions.eslint_d.with({
@@ -96,4 +95,5 @@ require('null-ls').setup({
       end,
     }),
   },
+  on_attach = on_attach,
 })
