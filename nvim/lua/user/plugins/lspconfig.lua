@@ -29,7 +29,7 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require('lspconfig')['phpactor'].setup({
+require('lspconfig').phpactor.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
@@ -44,7 +44,7 @@ require('lspconfig').jsonls.setup({
   },
 })
 
-require('lspconfig')['sumneko_lua'].setup({
+require('lspconfig').lua_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
