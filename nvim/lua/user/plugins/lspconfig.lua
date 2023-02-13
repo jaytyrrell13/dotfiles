@@ -3,6 +3,17 @@ vim.keymap.set('n', '<leader>o', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 
+vim.diagnostic.config({
+  float = {
+    format = function(diagnostic)
+      if diagnostic.user_data ~= nil and diagnostic.user_data.lsp.code ~= nil then
+        return string.format('%s: %s', diagnostic.user_data.lsp.code, diagnostic.message)
+      end
+      return diagnostic.message
+    end,
+  },
+})
+
 local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, buffer = bufnr }
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
