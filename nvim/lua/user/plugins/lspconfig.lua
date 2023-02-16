@@ -80,6 +80,17 @@ require('lspconfig').lua_ls.setup({
   },
 })
 
+require('lspconfig').rust_analyzer.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    'rustup',
+    'run',
+    'stable',
+    'rust-analyzer',
+  },
+})
+
 require('null-ls').setup({
   sources = {
     -- Code Actions
