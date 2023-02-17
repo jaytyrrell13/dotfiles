@@ -29,6 +29,7 @@ vim.keymap.set(
 )
 vim.keymap.set('n', '<leader>R', builtin.lsp_references, { noremap = true, desc = 'telescope.builtin.lsp_references' })
 vim.keymap.set('n', '<leader>m', builtin.keymaps, { noremap = true, desc = 'telescope.builtin.keymaps' })
+vim.keymap.set('n', '<leader>h', builtin.oldfiles, { noremap = true, desc = 'telescope.builtin.oldfiles' })
 vim.keymap.set('n', '<leader>ev', function()
   builtin.find_files({ cwd = '~/.config/nvim' })
 end, { noremap = true, desc = 'telescope.builtin.find_files for nvim config' })
