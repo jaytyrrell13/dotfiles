@@ -1,44 +1,12 @@
-local opts = { noremap = true }
-vim.keymap.set('n', '<leader>o', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-
-vim.diagnostic.config({
-  float = {
-    format = function(diagnostic)
-      if diagnostic.user_data ~= nil and diagnostic.user_data.lsp.code ~= nil then
-        return string.format('%s: %s', diagnostic.user_data.lsp.code, diagnostic.message)
-      end
-      return diagnostic.message
-    end,
-  },
-})
-
-local on_attach = function(client, bufnr)
-  local bufopts = { noremap = true, buffer = bufnr }
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-K>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-
-  local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-
-  if client.supports_method('textDocument/formatting') then
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      group = augroup,
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.format({ bufnr = bufnr })
-      end,
-    })
-  end
-end
+-- Setup Mason to automatically install LSP servers
+require('mason').setup()
+require('mason-lspconfig').setup({ automatic_installation = true })
+require('user.plugins.lsp.keymaps')
+require('user.plugins.lsp.diagnostic')
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+local on_attach = require('user.plugins.lsp.on_attach')
 
 require('lspconfig').phpactor.setup({
   on_attach = on_attach,
@@ -119,3 +87,4 @@ require('null-ls').setup({
   },
   on_attach = on_attach,
 })
+require('mason-null-ls').setup({ automatic_installation = true })
