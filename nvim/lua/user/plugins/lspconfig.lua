@@ -8,7 +8,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = require('user.plugins.lsp.on_attach')
 
-require('lspconfig').phpactor.setup({
+require('lspconfig').intelephense.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
