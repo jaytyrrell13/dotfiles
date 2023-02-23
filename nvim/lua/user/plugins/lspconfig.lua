@@ -59,31 +59,33 @@ require('lspconfig').rust_analyzer.setup({
   },
 })
 
-require('null-ls').setup({
+local null_ls = require('null-ls')
+null_ls.setup({
   sources = {
     -- Code Actions
-    require('null-ls').builtins.code_actions.eslint_d.with({
+    null_ls.builtins.code_actions.eslint_d.with({
       condition = function(utils)
         return utils.root_has_file({ '.eslintrc.js' })
       end,
     }),
 
     -- Diagnostics
-    require('null-ls').builtins.diagnostics.eslint_d.with({
+    null_ls.builtins.diagnostics.eslint_d.with({
       condition = function(utils)
         return utils.root_has_file({ '.eslintrc.js' })
       end,
     }),
 
     -- Formatting
-    require('null-ls').builtins.formatting.stylua.with({
+    null_ls.builtins.formatting.stylua.with({
       extra_args = { '--config-path', vim.fn.expand('~/.config/nvim/.stylua.toml') },
     }),
-    require('null-ls').builtins.formatting.eslint_d.with({
+    null_ls.builtins.formatting.eslint_d.with({
       condition = function(utils)
         return utils.root_has_file({ '.eslintrc.js' })
       end,
     }),
+    null_ls.builtins.formatting.trim_whitespace,
   },
   on_attach = on_attach,
 })
