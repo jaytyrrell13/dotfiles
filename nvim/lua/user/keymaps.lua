@@ -1,6 +1,3 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 vim.keymap.set('n', '<leader>N', ':Lexplore %:p:h<cr>')
 vim.keymap.set('n', '<leader>n', ':Lexplore<cr>')
 
