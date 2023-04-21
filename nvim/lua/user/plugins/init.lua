@@ -2,13 +2,16 @@ return {
   {
     'rmehri01/onenord.nvim',
     config = function()
-      require('onenord').setup()
+      require('onenord').setup({
+        disable = {
+          background = true,
+        },
+      })
     end,
   },
 
   'sheerun/vim-polyglot',
   'tpope/vim-commentary',
-  'tpope/vim-surround',
   'tpope/vim-unimpaired',
   'AndrewRadev/splitjoin.vim',
 

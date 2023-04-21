@@ -1,6 +1,3 @@
-vim.keymap.set('n', '<leader>N', ':Lexplore %:p:h<cr>')
-vim.keymap.set('n', '<leader>n', ':Lexplore<cr>')
-
 vim.keymap.set('n', '<leader>w', ':w!<cr>')
 vim.keymap.set('n', '<leader>q', ':q<cr>')
 
