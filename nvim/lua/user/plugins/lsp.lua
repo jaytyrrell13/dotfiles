@@ -132,6 +132,7 @@ return {
           end,
         }),
         null_ls.builtins.formatting.trim_whitespace,
+        null_ls.builtins.formatting.pint,
       },
       on_attach = on_attach,
     })
