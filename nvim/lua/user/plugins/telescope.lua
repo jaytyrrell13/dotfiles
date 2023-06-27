@@ -3,7 +3,7 @@ return {
   dependencies = {
     { 'nvim-lua/plenary.nvim' },
     { 'kyazdani42/nvim-web-devicons' },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    { 'nvim-telescope/telescope-fzf-native.nvim',    build = 'make' },
     { 'nvim-telescope/telescope-live-grep-args.nvim' },
     { 'jaytyrrell13/telescope-artisan.nvim' },
   },
@@ -11,7 +11,17 @@ return {
     require('telescope').load_extension('fzf')
     require('telescope').load_extension('live_grep_args')
     require('telescope').load_extension('artisan')
-    require('telescope').setup({})
+    require('telescope').setup({
+      pickers = {
+        buffers = {
+          mappings = {
+            i = {
+              ['<C-x>'] = 'delete_buffer',
+            },
+          },
+        },
+      },
+    })
 
     local builtin = require('telescope.builtin')
     local extensions = require('telescope').extensions
