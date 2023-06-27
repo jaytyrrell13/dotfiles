@@ -47,7 +47,12 @@ return {
           group = augroup,
           buffer = bufnr,
           callback = function()
-            vim.lsp.buf.format({ bufnr = bufnr })
+            vim.lsp.buf.format({
+              filter = function(cl)
+                return cl.name == 'null-ls'
+              end,
+              bufnr = bufnr,
+            })
           end,
         })
       end
