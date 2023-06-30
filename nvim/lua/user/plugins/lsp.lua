@@ -25,9 +25,9 @@ return {
       float = {
         format = function(diagnostic)
           if
-              diagnostic.user_data ~= nil
-              and diagnostic.user_data.lsp ~= nil
-              and diagnostic.user_data.lsp.code ~= nil
+            diagnostic.user_data ~= nil
+            and diagnostic.user_data.lsp ~= nil
+            and diagnostic.user_data.lsp.code ~= nil
           then
             return string.format('%s: %s', diagnostic.user_data.lsp.code, diagnostic.message)
           end
@@ -58,7 +58,7 @@ return {
       end
     end
 
-    require('lspconfig').intelephense.setup({
+    require('lspconfig').phpactor.setup({
       on_attach = on_attach,
       capabilities = capabilities,
     })
