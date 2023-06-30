@@ -56,11 +56,5 @@ return {
     vim.keymap.set('n', '<leader>ev', function()
       builtin.find_files({ cwd = '~/.config/nvim' })
     end, { noremap = true, desc = 'telescope.builtin.find_files for nvim config' })
-    vim.keymap.set(
-      'n',
-      '<leader>a',
-      extensions.artisan.artisan,
-      { noremap = true, desc = 'telescope.extensions.artisan' }
-    )
   end,
 }
