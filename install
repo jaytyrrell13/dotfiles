@@ -16,3 +16,7 @@ ln -s $DOTFILES/nvim $HOME/.config/nvim
 echo 'Linking kitty config'
 rm -rf $HOME/.config/kitty
 ln -s $DOTFILES/kitty $HOME/.config/kitty
+
+echo 'Linking Phpactor config'
+rm -rf $HOME/.config/phpactor
+ln -s $DOTFILES/phpactor $HOME/.config/phpactor
