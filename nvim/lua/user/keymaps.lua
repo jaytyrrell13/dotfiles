@@ -28,3 +28,6 @@ vim.keymap.set('v', '>', '>gv')
 -- Easy insertion of a trailing ; or , from insert mode
 vim.keymap.set('i', ';;', '<esc>A;<esc>')
 vim.keymap.set('i', ',,', '<esc>A,<esc>')
+
+vim.keymap.set('n', '<leader>N', ':Lexplore %:p:h<cr>')
+vim.keymap.set('n', '<leader>n', ':Lexplore<cr>')

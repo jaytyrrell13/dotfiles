@@ -21,3 +21,7 @@ vim.opt.backupdir:remove('.') -- keep backups out of the current directory
 vim.opt.wildmode = 'longest:full,full' -- complete the longest common match, and allow tabbing the results to fully complete them
 vim.opt.signcolumn = 'yes'
 
+vim.go.netrw_banner = 0
+vim.go.netrw_winsize = 30
+vim.go.netrw_altv = 1
+vim.go.netrw_browse_split = 0
