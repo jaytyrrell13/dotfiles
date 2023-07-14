@@ -4,8 +4,6 @@ return {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'b0o/schemastore.nvim',
-    'jose-elias-alvarez/null-ls.nvim',
-    'jayp0521/mason-null-ls.nvim',
   },
   config = function()
     -- Setup Mason to automatically install LSP servers
@@ -38,33 +36,11 @@ return {
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-    local on_attach = function(client, bufnr)
-      local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-
-      if client.supports_method('textDocument/formatting') then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd('BufWritePre', {
-          group = augroup,
-          buffer = bufnr,
-          callback = function()
-            vim.lsp.buf.format({
-              filter = function(cl)
-                return cl.name == 'null-ls'
-              end,
-              bufnr = bufnr,
-            })
-          end,
-        })
-      end
-    end
-
     require('lspconfig').phpactor.setup({
-      on_attach = on_attach,
       capabilities = capabilities,
     })
 
     require('lspconfig').jsonls.setup({
-      on_attach = on_attach,
       capabilities = capabilities,
       settings = {
         json = {
@@ -74,7 +50,6 @@ return {
     })
 
     require('lspconfig').lua_ls.setup({
-      on_attach = on_attach,
       capabilities = capabilities,
       settings = {
         Lua = {
@@ -98,38 +73,5 @@ return {
         },
       },
     })
-
-    local null_ls = require('null-ls')
-    null_ls.setup({
-      sources = {
-        -- Code Actions
-        null_ls.builtins.code_actions.eslint_d.with({
-          condition = function(utils)
-            return utils.root_has_file({ '.eslintrc.js' })
-          end,
-        }),
-
-        -- Diagnostics
-        null_ls.builtins.diagnostics.eslint_d.with({
-          condition = function(utils)
-            return utils.root_has_file({ '.eslintrc.js' })
-          end,
-        }),
-
-        -- Formatting
-        null_ls.builtins.formatting.stylua.with({
-          extra_args = { '--config-path', vim.fn.expand('~/.config/nvim/.stylua.toml') },
-        }),
-        null_ls.builtins.formatting.eslint_d.with({
-          condition = function(utils)
-            return utils.root_has_file({ '.eslintrc.js' })
-          end,
-        }),
-        null_ls.builtins.formatting.trim_whitespace,
-        null_ls.builtins.formatting.pint,
-      },
-      on_attach = on_attach,
-    })
-    require('mason-null-ls').setup({ automatic_installation = true })
   end,
 }
