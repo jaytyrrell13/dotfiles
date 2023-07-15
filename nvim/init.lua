@@ -18,3 +18,9 @@ require('lazy').setup('user.plugins')
 
 require('user.options')
 require('user.keymaps')
+
+local FormatAutogroup = vim.api.nvim_create_augroup('FormatAutogroup', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+  group = FormatAutogroup,
+  command = 'FormatWrite',
+})

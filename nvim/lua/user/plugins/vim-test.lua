@@ -9,9 +9,9 @@ return {
   },
   config = function()
     vim.cmd([[
-        let g:test#strategy = 'neovim'
-        let g:test#neovim#start_normal = 1
-        let g:test#php#phpunit#executable = './vendor/bin/phpunit'
-        ]])
+      let g:test#strategy = 'neovim'
+      let g:test#neovim#start_normal = 1
+      let g:test#php#phpunit#executable = './vendor/bin/phpunit'
+    ]])
   end,
 }
