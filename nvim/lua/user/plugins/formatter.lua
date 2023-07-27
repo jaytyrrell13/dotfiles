@@ -10,12 +10,11 @@ return {
         php = function()
           return {
             exe = './vendor/bin/pint',
-            stdin = true,
           }
         end,
 
         vue = {
-          require('formatter.defaults').eslint_d,
+          require('formatter.defaults').eslint,
         },
       },
     })
