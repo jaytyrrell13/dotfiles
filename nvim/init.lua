@@ -14,7 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-require('lazy').setup('user.plugins')
+require('lazy').setup('user.plugins', {
+  dev = {
+    path = '~/Code',
+    patterns = { 'jaytyrrell13' },
+  },
+})
 
 require('user.options')
 require('user.keymaps')

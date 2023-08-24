@@ -17,6 +17,20 @@ return {
   },
 
   {
+    'jaytyrrell13/static.nvim',
+    dev = true,
+    lazy = false,
+    opts = {
+      strategy = 'neovim',
+    },
+    keys = {
+      { '<leader>Sb', ':Static build<cr>' },
+      { '<leader>Ss', ':Static serve<cr>' },
+      { '<leader>Sp', ':Static prod<cr>' },
+    },
+  },
+
+  {
     'RRethy/vim-illuminate',
     event = { 'BufReadPost', 'BufNewFile' },
     opts = {
