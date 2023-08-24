@@ -34,3 +34,5 @@ vim.keymap.set('n', '<leader>n', ':Lexplore<cr>')
 
 vim.keymap.set('n', '<leader>jb', ':!vendor/bin/jigsaw build --quiet<cr>')
 vim.keymap.set('n', '<leader>jp', ':!vendor/bin/jigsaw build production --quiet<cr>')
+
+vim.keymap.set('t', '<esc>', '<C-\\><C-n>')
