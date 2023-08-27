@@ -11,7 +11,7 @@ alias _="sudo"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias ll="ls -lah"
+alias ll="exa -lah --icons"
 
 alias gst="git status"
 alias ga="git add"
