@@ -32,9 +32,12 @@ return {
     )
     vim.keymap.set('n', '<leader>s', builtin.grep_string, { noremap = true, desc = 'telescope.builtin.grep_string' })
     vim.keymap.set('n', '<leader>f', builtin.find_files, { noremap = true, desc = 'telescope.builtin.find_files' })
+    vim.keymap.set('n', '<leader>F', function()
+      require('telescope.builtin').find_files({ no_ignore = true, hidden = true, prompt_title = 'All Files' })
+    end, { noremap = true, desc = 'telescope.builtin.find_files all' })
     vim.keymap.set(
       'n',
-      '<leader>g',
+      '<leader>ga',
       extensions.live_grep_args.live_grep_args,
       { noremap = true, desc = 'telescope.extensions.live_grep_args' }
     )

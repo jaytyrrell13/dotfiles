@@ -53,12 +53,6 @@ return {
   'sheerun/vim-polyglot',
   'tpope/vim-commentary',
   'tpope/vim-unimpaired',
-  'AndrewRadev/splitjoin.vim',
-
-  {
-    'whatyouhide/vim-textobj-xmlattr',
-    dependencies = 'kana/vim-textobj-user',
-  },
 
   {
     'windwp/nvim-autopairs',
