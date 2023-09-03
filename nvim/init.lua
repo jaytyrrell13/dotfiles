@@ -29,3 +29,12 @@ vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
   group = FormatAutogroup,
   command = 'FormatWrite',
 })
+
+local AstroAutogroup = vim.api.nvim_create_augroup('AstroAutogroup', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufRead' }, {
+  pattern = { '*.astro' },
+  group = AstroAutogroup,
+  callback = function()
+    vim.cmd('set filetype=astro')
+  end,
+})
