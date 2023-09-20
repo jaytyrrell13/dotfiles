@@ -49,6 +49,10 @@ return {
       },
     })
 
+    require('lspconfig').tailwindcss.setup({
+      capabilities = capabilities,
+    })
+
     require('lspconfig').lua_ls.setup({
       capabilities = capabilities,
       settings = {
