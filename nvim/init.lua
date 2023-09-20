@@ -30,6 +30,14 @@ vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
   command = 'FormatWrite',
 })
 
+local LintAutogroup = vim.api.nvim_create_augroup('LintAutogroup', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+  group = LintAutogroup,
+  callback = function()
+    require('lint').try_lint()
+  end,
+})
+
 local AstroAutogroup = vim.api.nvim_create_augroup('AstroAutogroup', { clear = true })
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufRead' }, {
   pattern = { '*.astro' },
