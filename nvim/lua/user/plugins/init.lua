@@ -7,11 +7,6 @@ return {
         disable = {
           background = true,
         },
-        custom_highlights = {
-          ['IlluminatedWordText'] = { fg = c.blue, bg = c.selection },
-          ['IlluminatedWordRead'] = { fg = c.blue, bg = c.selection },
-          ['IlluminatedWordWrite'] = { fg = c.blue, bg = c.selection },
-        },
       })
     end,
   },
@@ -28,26 +23,6 @@ return {
       { '<leader>Ss', ':Static serve<cr>' },
       { '<leader>Sp', ':Static prod<cr>' },
     },
-  },
-
-  {
-    'RRethy/vim-illuminate',
-    event = { 'BufReadPost', 'BufNewFile' },
-    opts = {
-      delay = 200,
-      large_file_cutoff = 2000,
-      large_file_overrides = {
-        providers = { 'lsp' },
-      },
-      filetypes_denylist = {
-        'fugitive',
-        'TelescopePrompt',
-        'TelescopeResults',
-      },
-    },
-    config = function(_, opts)
-      require('illuminate').configure(opts)
-    end,
   },
 
   'sheerun/vim-polyglot',
