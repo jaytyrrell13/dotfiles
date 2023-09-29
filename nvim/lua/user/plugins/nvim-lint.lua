@@ -3,8 +3,11 @@ return {
   lazy = false,
   config = function()
     require('lint').linters_by_ft = {
-      typescript = { 'eslint' },
-      typescriptreact = { 'eslint' },
+      javascript = { 'eslint_d' },
+      typescript = { 'eslint_d' },
+      typescriptreact = { 'eslint_d' },
+      vue = { 'eslint_d' },
+      astro = { 'eslint_d' },
     }
   end,
 }

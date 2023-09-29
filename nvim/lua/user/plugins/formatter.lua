@@ -13,8 +13,12 @@ return {
           }
         end,
 
-        vue = {
-          require('formatter.defaults').eslint,
+        typescript = {
+          require('formatter.defaults').prettier,
+        },
+
+        typescriptreact = {
+          require('formatter.defaults').prettier,
         },
       },
     })
