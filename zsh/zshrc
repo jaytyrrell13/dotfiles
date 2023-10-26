@@ -30,14 +30,14 @@ alias nah="git reset --hard; git clean -df;"
 alias a="php artisan"
 alias p="vendor/bin/phpunit"
 alias cda="composer dump-autoload"
-alias jigsaw="vendor/bin/jigsaw"
 
-alias chronicle="cd ~/Code/chronicle && nvim ."
-alias monies="cd ~/Code/monies && nvim ."
-alias dotfiles="cd ~/Code/dotfiles && nvim ."
+alias chronicle="cd ~/Code/chronicle && nvim"
+alias monies="cd ~/Code/monies && nvim"
+alias dotfiles="cd ~/Code/dotfiles && nvim"
+alias jt="cd ~/Code/jaytyrrellco"
+alias vjt="cd ~/Code/jaytyrrellco && nvim"
 
 alias o="open ."
-alias sublime="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ."
 
 function pag() {
     ps aux | grep $1
@@ -58,5 +58,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-[ -f ~/.cargo/env ] && source ~/.cargo/env
