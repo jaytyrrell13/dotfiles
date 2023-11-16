@@ -2,12 +2,12 @@ return {
   'L3MON4D3/LuaSnip',
   dependencies = {
     'rafamadriz/friendly-snippets',
-    config = function()
-      require('luasnip.loaders.from_vscode').lazy_load()
-      require('luasnip').filetype_extend('typescript', { 'javascript' })
-    end,
+    'jaytyrrell13/static.nvim',
   },
   config = function()
+    require('luasnip.loaders.from_vscode').lazy_load()
+    require('luasnip').filetype_extend('typescript', { 'javascript' })
+
     local ls = require('luasnip')
 
     ls.config.set_config({
