@@ -24,19 +24,19 @@ require('lazy').setup('user.plugins', {
 require('user.options')
 require('user.keymaps')
 
-local FormatAutogroup = vim.api.nvim_create_augroup('FormatAutogroup', { clear = true })
-vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
-  group = FormatAutogroup,
-  command = 'FormatWrite',
-})
+-- local FormatAutogroup = vim.api.nvim_create_augroup('FormatAutogroup', { clear = true })
+-- vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+--   group = FormatAutogroup,
+--   command = 'FormatWrite',
+-- })
 
-local LintAutogroup = vim.api.nvim_create_augroup('LintAutogroup', { clear = true })
-vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
-  group = LintAutogroup,
-  callback = function()
-    require('lint').try_lint()
-  end,
-})
+-- local LintAutogroup = vim.api.nvim_create_augroup('LintAutogroup', { clear = true })
+-- vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+--   group = LintAutogroup,
+--   callback = function()
+--     require('lint').try_lint()
+--   end,
+-- })
 
 local AstroAutogroup = vim.api.nvim_create_augroup('AstroAutogroup', { clear = true })
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufRead' }, {
