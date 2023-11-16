@@ -4,6 +4,8 @@ return {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'b0o/schemastore.nvim',
+    'nvimtools/none-ls.nvim',
+    'jay-babu/mason-null-ls.nvim',
   },
   config = function()
     -- Setup Mason to automatically install LSP servers
@@ -23,9 +25,9 @@ return {
       float = {
         format = function(diagnostic)
           if
-            diagnostic.user_data ~= nil
-            and diagnostic.user_data.lsp ~= nil
-            and diagnostic.user_data.lsp.code ~= nil
+              diagnostic.user_data ~= nil
+              and diagnostic.user_data.lsp ~= nil
+              and diagnostic.user_data.lsp.code ~= nil
           then
             return string.format('%s: %s', diagnostic.user_data.lsp.code, diagnostic.message)
           end
@@ -35,6 +37,26 @@ return {
     })
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+    -- local on_attach = function(client, bufnr)
+    --   local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
+    --   if client.supports_method('textDocument/formatting') then
+    --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    --     vim.api.nvim_create_autocmd('BufWritePre', {
+    --       group = augroup,
+    --       buffer = bufnr,
+    --       callback = function()
+    --         vim.lsp.buf.format({
+    --           filter = function(cl)
+    --             return cl.name == 'null-ls'
+    --           end,
+    --           bufnr = bufnr,
+    --         })
+    --       end,
+    --     })
+    --   end
+    -- end
 
     require('lspconfig').phpactor.setup({
       capabilities = capabilities,
@@ -76,6 +98,54 @@ return {
           },
         },
       },
+    })
+
+    local null_ls = require('null-ls')
+    local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+    null_ls.setup({
+      sources = {
+        -- Code Actions
+        null_ls.builtins.code_actions.eslint_d.with({
+          condition = function(utils)
+            return utils.root_has_file({ '.eslintrc.js' })
+          end,
+        }),
+
+        -- Diagnostics
+        null_ls.builtins.diagnostics.eslint_d.with({
+          condition = function(utils)
+            return utils.root_has_file({ '.eslintrc.js' })
+          end,
+        }),
+
+        -- Formatting
+        null_ls.builtins.formatting.stylua.with({
+          extra_args = { '--config-path', vim.fn.expand('~/.config/nvim/.stylua.toml') },
+        }),
+        null_ls.builtins.formatting.eslint_d.with({
+          condition = function(utils)
+            return utils.root_has_file({ '.eslintrc.js' })
+          end,
+        }),
+        null_ls.builtins.formatting.trim_whitespace,
+        null_ls.builtins.formatting.pint.with({
+          condition = function(utils)
+            return utils.root_has_file({ 'vendor/bin/pint' })
+          end,
+        }),
+      },
+      on_attach = function(client, bufnr)
+        if client.supports_method('textDocument/formatting') then
+          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+              vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
+            end,
+          })
+        end
+      end,
     })
   end,
 }
