@@ -25,9 +25,9 @@ return {
       float = {
         format = function(diagnostic)
           if
-              diagnostic.user_data ~= nil
-              and diagnostic.user_data.lsp ~= nil
-              and diagnostic.user_data.lsp.code ~= nil
+            diagnostic.user_data ~= nil
+            and diagnostic.user_data.lsp ~= nil
+            and diagnostic.user_data.lsp.code ~= nil
           then
             return string.format('%s: %s', diagnostic.user_data.lsp.code, diagnostic.message)
           end
@@ -60,6 +60,10 @@ return {
 
     require('lspconfig').phpactor.setup({
       capabilities = capabilities,
+      init_options = {
+        ['language_server_phpstan.enabled'] = false,
+        ['language_server_psalm.enabled'] = false,
+      },
     })
 
     require('lspconfig').jsonls.setup({
