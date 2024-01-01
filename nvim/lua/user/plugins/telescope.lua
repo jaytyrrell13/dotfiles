@@ -14,7 +14,7 @@ return {
         buffers = {
           mappings = {
             i = {
-              ['<C-x>'] = 'delete_buffer',
+              ['<C-q>'] = 'delete_buffer',
             },
           },
         },
