@@ -8,18 +8,36 @@ return {
     'jay-babu/mason-null-ls.nvim',
   },
   config = function()
+    local lspconfig = require('lspconfig')
     -- Setup Mason to automatically install LSP servers
     require('mason').setup()
     require('mason-lspconfig').setup({ automatic_installation = true })
 
-    local opts = { noremap = true }
-    vim.keymap.set('n', '<leader>o', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+    vim.keymap.set('n', '<leader>q', vim.diagnostic.setqflist)
+
+    vim.api.nvim_create_autocmd('LspAttach', {
+      group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+      callback = function(ev)
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+        vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+        vim.keymap.set('n', '<space>wl', function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, opts)
+        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+        vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+      end,
+    })
 
     vim.diagnostic.config({
       float = {
@@ -38,27 +56,7 @@ return {
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-    -- local on_attach = function(client, bufnr)
-    --   local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-
-    --   if client.supports_method('textDocument/formatting') then
-    --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    --     vim.api.nvim_create_autocmd('BufWritePre', {
-    --       group = augroup,
-    --       buffer = bufnr,
-    --       callback = function()
-    --         vim.lsp.buf.format({
-    --           filter = function(cl)
-    --             return cl.name == 'null-ls'
-    --           end,
-    --           bufnr = bufnr,
-    --         })
-    --       end,
-    --     })
-    --   end
-    -- end
-
-    require('lspconfig').phpactor.setup({
+    lspconfig.phpactor.setup({
       capabilities = capabilities,
       init_options = {
         ['language_server_phpstan.enabled'] = false,
@@ -66,7 +64,7 @@ return {
       },
     })
 
-    require('lspconfig').jsonls.setup({
+    lspconfig.jsonls.setup({
       capabilities = capabilities,
       settings = {
         json = {
@@ -75,11 +73,15 @@ return {
       },
     })
 
-    require('lspconfig').tailwindcss.setup({
+    lspconfig.astro.setup({
       capabilities = capabilities,
     })
 
-    require('lspconfig').lua_ls.setup({
+    lspconfig.tailwindcss.setup({
+      capabilities = capabilities,
+    })
+
+    lspconfig.lua_ls.setup({
       capabilities = capabilities,
       settings = {
         Lua = {
