@@ -69,8 +69,10 @@ return {
     event = { 'VeryLazy' },
     config = function()
       require('laravel').setup({
-        route_info = {
-          enable = false,
+        features = {
+          route_info = {
+            enable = false,
+          },
         },
       })
       require('telescope').load_extension('laravel')
