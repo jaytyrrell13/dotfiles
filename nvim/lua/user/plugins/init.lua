@@ -2,7 +2,6 @@ return {
   {
     'rmehri01/onenord.nvim',
     config = function()
-      local c = require('onenord.colors.onenordlight')
       require('onenord').setup({
         disable = {
           background = true,

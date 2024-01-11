@@ -3,7 +3,8 @@ return {
   dependencies = 'kyazdani42/nvim-web-devicons',
   opts = {
     options = {
-      theme = 'onenord',
+      theme = 'auto',
+      globalstatus = true,
       section_separators = '',
       component_separators = '',
     },

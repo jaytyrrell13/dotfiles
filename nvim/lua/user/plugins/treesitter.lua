@@ -46,6 +46,15 @@ return {
             ['[M'] = '@function.outer',
           },
         },
+        swap = {
+          enable = true,
+          swap_next = {
+            ['<leader>a'] = '@parameter.inner',
+          },
+          swap_prev = {
+            ['<leader>A'] = '@parameter.inner',
+          },
+        },
       },
     })
   end,
