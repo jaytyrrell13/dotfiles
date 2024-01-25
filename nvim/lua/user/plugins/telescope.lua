@@ -24,12 +24,6 @@ return {
     local builtin = require('telescope.builtin')
     local extensions = require('telescope').extensions
 
-    vim.keymap.set(
-      'n',
-      '<leader>d',
-      builtin.lsp_definitions,
-      { noremap = true, desc = 'telescope.builtin.lsp_definitions' }
-    )
     vim.keymap.set('n', '<leader>s', builtin.grep_string, { noremap = true, desc = 'telescope.builtin.grep_string' })
     vim.keymap.set('n', '<leader>f', builtin.find_files, { noremap = true, desc = 'telescope.builtin.find_files' })
     vim.keymap.set('n', '<leader>F', function()
