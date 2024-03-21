@@ -123,31 +123,13 @@ return {
     local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
     null_ls.setup({
       sources = {
-        -- Code Actions
-        null_ls.builtins.code_actions.eslint_d.with({
-          condition = function(utils)
-            return utils.root_has_file({ '.eslintrc.js' })
-          end,
-        }),
-
         -- Diagnostics
-        null_ls.builtins.diagnostics.eslint_d.with({
-          condition = function(utils)
-            return utils.root_has_file({ '.eslintrc.js' })
-          end,
-        }),
         null_ls.builtins.diagnostics.golangci_lint,
 
         -- Formatting
         null_ls.builtins.formatting.stylua.with({
           extra_args = { '--config-path', vim.fn.expand('~/.config/nvim/.stylua.toml') },
         }),
-        null_ls.builtins.formatting.eslint_d.with({
-          condition = function(utils)
-            return utils.root_has_file({ '.eslintrc.js' })
-          end,
-        }),
-        null_ls.builtins.formatting.trim_whitespace,
         null_ls.builtins.formatting.pint.with({
           condition = function(utils)
             return utils.root_has_file({ 'vendor/bin/pint' })
