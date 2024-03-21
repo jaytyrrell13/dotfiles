@@ -73,6 +73,15 @@ return {
       },
     })
 
+    lspconfig.gopls.setup({
+      capabilities = capabilities,
+      settings = {
+        gopls = {
+          gofumpt = true,
+        },
+      },
+    })
+
     lspconfig.astro.setup({
       capabilities = capabilities,
     })
@@ -127,6 +136,7 @@ return {
             return utils.root_has_file({ '.eslintrc.js' })
           end,
         }),
+        null_ls.builtins.diagnostics.golangci_lint,
 
         -- Formatting
         null_ls.builtins.formatting.stylua.with({
@@ -143,6 +153,7 @@ return {
             return utils.root_has_file({ 'vendor/bin/pint' })
           end,
         }),
+        null_ls.builtins.formatting.gofumpt,
       },
       on_attach = function(client, bufnr)
         if client.supports_method('textDocument/formatting') then
