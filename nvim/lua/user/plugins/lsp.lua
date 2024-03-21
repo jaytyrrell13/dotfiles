@@ -73,6 +73,10 @@ return {
       },
     })
 
+    lspconfig.eslint.setup({
+      capabilities = capabilities,
+    })
+
     lspconfig.gopls.setup({
       capabilities = capabilities,
       settings = {
