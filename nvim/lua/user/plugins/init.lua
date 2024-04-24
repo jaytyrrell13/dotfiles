@@ -24,9 +24,9 @@ return {
     },
   },
 
-  'sheerun/vim-polyglot',
   'tpope/vim-commentary',
   'tpope/vim-unimpaired',
+  'tpope/vim-sleuth',
 
   {
     'windwp/nvim-autopairs',
