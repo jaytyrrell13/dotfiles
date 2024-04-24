@@ -1,5 +1,8 @@
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/Users/jay/.composer/vendor/bin:$PATH"
+export PATH="/Users/jay/Library/Application Support/Herd/bin/:/Users/jay/go/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/jay/.composer/vendor/bin:$PATH"
 export EDITOR="nvim"
+
+# Herd injected PHP 8.2 configuration.
+export HERD_PHP_82_INI_SCAN_DIR="/Users/jay/Library/Application Support/Herd/config/php/82/"
 
 source ~/.git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=true
@@ -57,8 +60,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Herd injected PHP binary.
-export PATH="/Users/jay/Library/Application Support/Herd/bin/":$PATH
+[ -f "$HOME/.pal" ] && source "$HOME/.pal"
 
-# Herd injected PHP 8.2 configuration.
-export HERD_PHP_82_INI_SCAN_DIR="/Users/jay/Library/Application Support/Herd/config/php/82/"
