@@ -34,12 +34,6 @@ alias a="php artisan"
 alias p="vendor/bin/phpunit"
 alias cda="composer dump-autoload"
 
-alias chronicle="cd ~/Code/chronicle && nvim"
-alias monies="cd ~/Code/monies && nvim"
-alias dotfiles="cd ~/Code/dotfiles && nvim"
-alias jt="cd ~/Code/jaytyrrellco"
-alias vjt="cd ~/Code/jaytyrrellco && nvim"
-
 alias o="open ."
 
 function pag() {
