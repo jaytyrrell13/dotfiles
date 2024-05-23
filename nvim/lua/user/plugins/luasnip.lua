@@ -32,5 +32,9 @@ return {
     ls.add_snippets('vue', {
       ls.parser.parse_snippet('defineProps', 'defineProps<{\n  $0\n}>()'),
     })
+
+    ls.add_snippets('go', {
+      ls.parser.parse_snippet('ierr', 'if $1 != nil {\n\treturn $0\n}'),
+    })
   end,
 }
