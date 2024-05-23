@@ -27,3 +27,9 @@ vim.keymap.set('n', '<leader>N', ':Lexplore %:p:h<cr>')
 vim.keymap.set('n', '<leader>n', ':Lexplore<cr>')
 
 vim.keymap.set('t', '<esc>', '<C-\\><C-n>')
+
+-- These mappings control the size of splits (height/width)
+vim.keymap.set('n', '<C-,>', '<c-w>5<')
+vim.keymap.set('n', '<C-.>', '<c-w>5>')
+vim.keymap.set('n', '<C-t>', '<C-W>+')
+vim.keymap.set('n', '<C-s>', '<C-W>-')
