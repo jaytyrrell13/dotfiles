@@ -1,3 +1,8 @@
+vim.keymap.set('n', '<leader>fs', function()
+  vim.lsp.buf.format()
+  vim.cmd.write()
+end)
+
 vim.keymap.set('n', '<leader>w', ':w!<cr>')
 vim.keymap.set('n', '<leader>q', ':q<cr>')
 
