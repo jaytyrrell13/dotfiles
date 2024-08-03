@@ -15,3 +15,12 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufRead' }, {
     vim.cmd('set filetype=astro')
   end,
 })
+
+-- Set filetype to html for .blade.php files
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufRead' }, {
+  pattern = { '*.blade.php' },
+  group = vim.api.nvim_create_augroup('blade-syntax', { clear = true }),
+  callback = function()
+    vim.cmd('set filetype=html')
+  end,
+})
