@@ -35,6 +35,7 @@ return {
 
     ls.add_snippets('go', {
       ls.parser.parse_snippet('ierr', 'if $1 != nil {\n\treturn $0\n}'),
+      ls.parser.parse_snippet('testf', 'func Test$1(t *testing.T) {\n\t$0\n}'),
     })
   end,
 }
