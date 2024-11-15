@@ -8,9 +8,6 @@ return {
     { 'jaytyrrell13/telescope-artisan.nvim' },
   },
   config = function()
-    require('telescope').load_extension('fzf')
-    require('telescope').load_extension('live_grep_args')
-    require('telescope').load_extension('artisan')
     require('telescope').setup({
       pickers = {
         buffers = {
@@ -22,6 +19,9 @@ return {
         },
       },
     })
+    require('telescope').load_extension('fzf')
+    require('telescope').load_extension('live_grep_args')
+    require('telescope').load_extension('artisan')
 
     local builtin = require('telescope.builtin')
     local extensions = require('telescope').extensions
