@@ -1,6 +1,6 @@
 return {
   'voldikss/vim-floaterm',
-  cmd = { 'FloatermToggle' },
+  cmd = { 'FloatermToggle', 'FloatermNew' },
   keys = {
     { '<leader>T', ':FloatermToggle<cr>', mode = 'n' },
     { '<leader>T', '<C-\\><C-n>:FloatermToggle<cr>', mode = 't' },
