@@ -9,7 +9,32 @@ return {
   },
   config = function()
     require('nvim-treesitter.configs').setup({
-      ensure_installed = 'all',
+      ensure_installed = {
+        'astro',
+        'comment',
+        'css',
+        'dockerfile',
+        'git_config',
+        'git_rebase',
+        'gitcommit',
+        'gitignore',
+        'go',
+        'gomod',
+        'gosum',
+        'html',
+        'javascript',
+        'json',
+        'lua',
+        'markdown',
+        'markdown_inline',
+        'php',
+        'query',
+        'sql',
+        'twig',
+        'typescript',
+        'vue',
+        'xml',
+      },
       highlight = {
         -- 'false' will disable the whole extension
         enable = true,
