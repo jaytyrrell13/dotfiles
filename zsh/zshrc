@@ -31,7 +31,7 @@ alias gcp="git cherry-pick"
 alias nah="git reset --hard; git clean -df;"
 
 alias a="php artisan"
-alias p="vendor/bin/phpunit"
+alias pu="vendor/bin/phpunit"
 alias cda="composer dump-autoload"
 
 alias o="open ."
@@ -58,3 +58,11 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/Users/jay/Library/Application Support/Herd/bin/":$PATH
 
 [ -f "$HOME/.config/pal/aliases" ] && source "$HOME/.config/pal/aliases"
+
+eval "$(starship init zsh)"
+
+# Herd injected PHP 8.3 configuration.
+export HERD_PHP_83_INI_SCAN_DIR="/Users/jay/Library/Application Support/Herd/config/php/83/"
+
+# Herd injected PHP 8.4 configuration.
+export HERD_PHP_84_INI_SCAN_DIR="/Users/jay/Library/Application Support/Herd/config/php/84/"
