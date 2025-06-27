@@ -59,8 +59,6 @@ export PATH="/Users/jay/Library/Application Support/Herd/bin/":$PATH
 
 [ -f "$HOME/.config/pal/aliases" ] && source "$HOME/.config/pal/aliases"
 
-eval "$(starship init zsh)"
-
 # Herd injected PHP 8.3 configuration.
 export HERD_PHP_83_INI_SCAN_DIR="/Users/jay/Library/Application Support/Herd/config/php/83/"
 
