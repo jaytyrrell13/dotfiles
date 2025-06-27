@@ -1,5 +1,6 @@
 adjust-cell-height = 50%
 cursor-style-blink = false
+font-size = 14
 shell-integration-features = no-cursor
 theme = onenord-light
 window-padding-x = 20
