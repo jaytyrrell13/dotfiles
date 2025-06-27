@@ -25,7 +25,6 @@ return {
   },
 
   'tpope/vim-commentary',
-  'tpope/vim-unimpaired',
 
   {
     'windwp/nvim-autopairs',
