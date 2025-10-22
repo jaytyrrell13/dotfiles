@@ -54,15 +54,16 @@ return {
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-    lspconfig.phpactor.setup({
+    vim.lsp.config('phpactor', {
       capabilities = capabilities,
       init_options = {
         ['language_server_phpstan.enabled'] = false,
         ['language_server_psalm.enabled'] = false,
       },
     })
+    vim.lsp.enable('phpactor')
 
-    lspconfig.jsonls.setup({
+    vim.lsp.config('jsonls', {
       capabilities = capabilities,
       settings = {
         json = {
@@ -71,7 +72,7 @@ return {
       },
     })
 
-    lspconfig.eslint.setup({
+    vim.lsp.config('eslint', {
       capabilities = capabilities,
       on_attach = function(client, bufnr)
         vim.api.nvim_create_autocmd('BufWritePre', {
@@ -80,8 +81,9 @@ return {
         })
       end,
     })
+    vim.lsp.enable('eslint')
 
-    lspconfig.gopls.setup({
+    vim.lsp.config('gopls', {
       capabilities = capabilities,
       settings = {
         gopls = {
@@ -89,20 +91,24 @@ return {
         },
       },
     })
+    vim.lsp.enable('gopls')
 
-    lspconfig.astro.setup({
+    vim.lsp.config('astro', {
       capabilities = capabilities,
     })
+    vim.lsp.enable('astro')
 
-    lspconfig.ts_ls.setup({
+    vim.lsp.config('ts_ls', {
       capabilities = capabilities,
     })
+    vim.lsp.enable('ts_ls')
 
-    lspconfig.tailwindcss.setup({
+    vim.lsp.config('tailwindcss', {
       capabilities = capabilities,
     })
+    vim.lsp.enable('tailwindcss')
 
-    lspconfig.lua_ls.setup({
+    vim.lsp.config('lua_ls', {
       capabilities = capabilities,
       settings = {
         Lua = {
@@ -126,5 +132,6 @@ return {
         },
       },
     })
+    vim.lsp.enable('lua_ls')
   end,
 }
