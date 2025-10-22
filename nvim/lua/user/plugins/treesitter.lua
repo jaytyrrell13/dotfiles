@@ -29,6 +29,7 @@ return {
         'markdown_inline',
         'php',
         'query',
+        'ruby',
         'sql',
         'twig',
         'typescript',
