@@ -18,9 +18,16 @@ return {
     ls.add_snippets('php', {
       ls.parser.parse_snippet('class', 'class $1\n{\n    $0\n}'),
       ls.parser.parse_snippet('pubf', 'public function $1($2): $3\n{\n\t$0\n}'),
-      ls.parser.parse_snippet('prif', 'private function $1($2): $3\n{\n\t$0\n}'),
+      ls.parser.parse_snippet('pubsf', 'public static function $1($2): $3\n{\n\t$0\n}'),
       ls.parser.parse_snippet('prof', 'protected function $1($2): $3\n{\n\t$0\n}'),
+      ls.parser.parse_snippet('prosf', 'protected static function $1($2): $3\n{\n\t$0\n}'),
+      ls.parser.parse_snippet('prif', 'private function $1($2): $3\n{\n\t$0\n}'),
+      ls.parser.parse_snippet('prisf', 'private static function $1($2): $3\n{\n\t$0\n}'),
       ls.parser.parse_snippet('testf', '/** @test */\npublic function it_$1(): void\n{\n\t$0\n}'),
+    })
+
+    ls.add_snippets('javascript', {
+      ls.parser.parse_snippet('import', "import $1 from '$0'"),
     })
 
     ls.add_snippets('typescript', {
