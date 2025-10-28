@@ -1,8 +1,9 @@
 adjust-cell-height = 50%
 cursor-style-blink = false
+font-family = "JetBrains Mono"
 font-size = 14
 shell-integration-features = no-cursor
-theme = onenord-light
+theme = everforest-light-hard
 window-padding-x = 20
 
 keybind = super+d=new_split:right

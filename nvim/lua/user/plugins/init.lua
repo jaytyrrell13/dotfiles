@@ -1,12 +1,23 @@
 return {
+  -- {
+  --   'rmehri01/onenord.nvim',
+  --   opts = {
+  --     disable = {
+  --       background = true,
+  --     },
+  --   },
+  -- },
+
   {
-    'rmehri01/onenord.nvim',
+    'neanias/everforest-nvim',
+    version = false,
+    lazy = false,
+    priority = 1000,
     config = function()
-      require('onenord').setup({
-        disable = {
-          background = true,
-        },
+      require('everforest').setup({
+        background = 'hard',
       })
+      vim.cmd.colorscheme('everforest')
     end,
   },
 
