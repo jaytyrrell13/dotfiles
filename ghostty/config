@@ -3,7 +3,7 @@ cursor-style-blink = false
 font-family = "JetBrains Mono"
 font-size = 14
 shell-integration-features = no-cursor
-theme = everforest-light-hard
+theme = modus_operandi
 window-padding-x = 20
 
 keybind = super+d=new_split:right
