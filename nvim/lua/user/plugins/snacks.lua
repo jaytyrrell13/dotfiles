@@ -21,7 +21,19 @@ return {
     {
       '<leader>sf',
       function()
-        Snacks.picker.files()
+        Snacks.picker.files({ hidden = true, ignored = true, exclude = { 'vendor', 'node_modules' } })
+      end,
+    },
+    {
+      '<leader>gl',
+      function()
+        Snacks.picker.git_log()
+      end,
+    },
+    {
+      '<leader>gf',
+      function()
+        Snacks.picker.git_log_file()
       end,
     },
     {
