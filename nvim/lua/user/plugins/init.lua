@@ -1,39 +1,4 @@
 return {
-  -- {
-  --   'rmehri01/onenord.nvim',
-  --   opts = {
-  --     disable = {
-  --       background = true,
-  --     },
-  --   },
-  -- },
-
-  {
-    'miikanissi/modus-themes.nvim',
-    priority = 1000,
-    config = function()
-      require('modus-themes').setup({
-        line_nr_column_background = false,
-        sign_column_background = false,
-      })
-
-      vim.cmd.colorscheme('modus_operandi')
-    end,
-  },
-
-  -- {
-  --   'neanias/everforest-nvim',
-  --   version = false,
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require('everforest').setup({
-  --       background = 'hard',
-  --     })
-  --     vim.cmd.colorscheme('everforest')
-  --   end,
-  -- },
-
   {
     'jaytyrrell13/static.nvim',
     dev = true,
