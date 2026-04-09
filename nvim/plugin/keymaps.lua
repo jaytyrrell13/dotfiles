@@ -38,3 +38,8 @@ vim.keymap.set('n', '<C-,>', '<c-w>5<')
 vim.keymap.set('n', '<C-.>', '<c-w>5>')
 vim.keymap.set('n', '<C-t>', '<C-W>+')
 vim.keymap.set('n', '<C-s>', '<C-W>-')
+
+-- copy/paste
+vim.keymap.set('v', '<leader>c', '"*yy<CR>', { noremap = true })
+vim.keymap.set('v', '<leader>v', '"+p<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>v', '"+p<CR>', { noremap = true })
