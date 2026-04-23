@@ -1,0 +1,18 @@
+{
+  "if err": {
+    "prefix": "ierr",
+    "body": [
+      "if $1 != nil {",
+      "\treturn $0",
+      "}"
+    ]
+  },
+  "test function": {
+    "prefix": "testf",
+    "body": [
+      "func Test$1(t *testing.T) {",
+      "\t$0",
+      "}"
+    ]
+  }
+}

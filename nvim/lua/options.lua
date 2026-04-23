@@ -24,8 +24,7 @@ vim.opt.showmode = false
 vim.opt.autoindent = true
 
 vim.cmd([[
-  let g:netrw_banner = 0
-  let g:netrw_winsize = 30
-  let g:netrw_altv = 1
-  let g:netrw_browse_split = 0
+  let g:test#strategy = 'neovim'
+  let g:test#neovim#start_normal = 1
+  let g:test#php#phpunit#executable = './vendor/bin/phpunit'
 ]])
