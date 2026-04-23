@@ -9,6 +9,8 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 
 setopt PROMPT_SUBST ; PS1='%B%F{2}%c%b%f%B%F{4}$(__git_ps1 " (%s)")%b%F{7} \$ '
 
+alias nv="nvim"
+
 alias cl="clear"
 alias _="sudo"
 alias ..="cd .."
